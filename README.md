@@ -1,6 +1,16 @@
-frontend-nanodegree-arcade-game
-===============================
+# frontend-nanodegree-arcade-game 
+Version 1.0 6/7/2016
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+This project is a replica of the classic arcade game Frogger which has been developed using the HTML5 canvas and object oriented javascript.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## To run the game
+
+Open the index.html file in your browser.
+
+## In-game instructions
+
+Navagate the player around the screen using the arrow keys.
+
+If you collide with a bug, you have lost the game and the player will be reset to the starting position.
+
+If the player makes it to the water, you have won and the game will automatically reset.
