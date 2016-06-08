@@ -1,5 +1,5 @@
 # frontend-nanodegree-arcade-game 
-Version 1.0 6/7/2016
+Version 1.1 6/8/2016
 
 This project is a replica of the classic arcade game Frogger which has been developed using the HTML5 canvas and object oriented javascript.
 

@@ -1,12 +1,20 @@
-// Enemies the player must avoid
-var Enemy = function(x,y) {
-    // assigns starting x and y coordinates and movement speed
-    // of each instance of enemy.
+// invoke strict mode.
+"use strict";
+
+var Character = function(x,y) {
+    // creates an instance of Character superclass taking x and y
+    // coordinates as inputs.
     this.x = x;
     this.y = y;
-    this.speed = Math.floor((Math.random() * 350) + 100);
+}
 
-    // the image/sprite for enemies.
+// Enemies the player must avoid
+var Enemy = function(x,y) {
+    // creates an instance of the Enemy subclass, assigns the sprite,
+    // and the movement speed of each instance of enemy. x and y
+    // coordinates are inherited from the Character superclass.
+    Character.call(this, x,y)
+    this.speed = Math.floor((Math.random() * 350) + 100);
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -34,15 +42,15 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Player class and initial x and y coordinates.
-var Player = function() {
+// creates an instance of the Player subclass and assigns the sprite.
+// x and y coordinates are inherited from the Character superclass.
+var Player = function(x,y) {
+    Character.call(this, x,y)
     this.sprite = 'images/char-boy.png';
-    this.x = 200;
-    this.y = 400;
 };
 
 //Update player position
-Player.prototype.update = function(){
+Player.prototype.update = function() {
     // if the up key is pressed then decrement the y value.
     if (this.ctlKey === 'up') {
         this.y = this.y - 83;
@@ -74,29 +82,25 @@ Player.prototype.render = function() {
 };
 
 // input handler for player.
-Player.prototype.handleInput = function(e){
+Player.prototype.handleInput = function(e) {
     this.ctlKey = e;
 };
 
 // resets player to beginning position.
 Player.prototype.reset = function() {
-  player.x = 200;
-  player.y = 400;
+  this.x = 200;
+  this.y = 400;
 };
 
 // instantiate enemy and player objects.
-var allEnemies = [];
+var allEnemies = [
+    new Enemy(-50, 65),
+    new Enemy(-50,145),
+    new Enemy(-50,230),
+    new Enemy(-50,310),
+    ];
 
-function setEnemies() {
-    allEnemies.push(new Enemy(-50, 65));
-    allEnemies.push(new Enemy(-50,145));
-    allEnemies.push(new Enemy(-50,230));
-    allEnemies.push(new Enemy(-50,310));
-}
-
-setEnemies();
-var player = new Player();
-
+var player = new Player(200,400);
 
 // listen for key presses and send the keys to
 // Player.handleInput() method.
